@@ -12,12 +12,22 @@ Read input file and turn string into more readable array i.e.
 var fs = require('fs');
 var array = fs.readFileSync('input.txt').toString().replace(/\r/g, "").split('\n');
 array = array.map(x => x.split(' '));
-// console.log(array);
+var arrayNum = [];
+array.forEach(function(item){
+	arrayNum.push(item.map(Number));
+});
 
-const goldilocksWeight = array[0][0],
-	goldilocksTemp   = array[0][1];
+var 	goldilocksWeight = arrayNum[0][0],
+		goldilocksTemp   = arrayNum[0][1];
 
-// console.log(goldilocksWeight, goldilocksTemp);
 // remove goldilocks from the array now that we already have her stored
-array.splice(0,1);
-console.log(array);
+arrayNum.splice(0,1);
+
+var results = [];
+
+arrayNum.forEach(function (item, index) {
+	if (goldilocksWeight <= item[0] && goldilocksTemp >= item[1]){
+		console.log(index + 1);
+	}
+});
+
