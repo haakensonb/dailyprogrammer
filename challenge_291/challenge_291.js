@@ -32,4 +32,3 @@ arrayNum.forEach(function (item, index) {
 		console.log(index + 1);
 	}
 });
-
