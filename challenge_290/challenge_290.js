@@ -9,7 +9,6 @@ function kaprekar(x, y) {
     for (let i = x; i <= y; i++){
         range.push(i);
     }
-    console.log(range);
     range.map(function (num) {
         if (isKaprekar(num)){
             kaprekarNums.push(num);
@@ -20,15 +19,19 @@ function kaprekar(x, y) {
 
 function isKaprekar(num) {
     let square = num * num;
-    // console.log(square);
+    // string version of square
     let sqrStr = String(square);
-    let part1 = sqrStr.slice(0,sqrStr.length / 2);
-    let part2 = sqrStr.slice(sqrStr.length / 2, sqrStr.length);
-    if (Number(part1) + Number(part2) === Number(num)){
-        return true;
+    // split string dynamically
+    for (let i = 1; i <= sqrStr.length; i++){
+        let part1 = sqrStr.slice(0,i);
+        let part2 = sqrStr.slice(i);
+        if(Number(part1) < 1 || Number(part2) < 1){
+            return false;
+        } else if (Number(part1) + Number(part2) === Number(num)){
+            return true;
+        }
     }
+    
 }
 
 kaprekar(1,50);
-
-// isKaprekar needs to be fixed so that parts are dynamic and not just halves, otherwise it works
