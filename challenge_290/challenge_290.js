@@ -35,3 +35,5 @@ function isKaprekar(num) {
 }
 
 kaprekar(1,50);
+kaprekar(2, 100);
+kaprekar(101, 9000);
